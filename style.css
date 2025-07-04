@@ -1,17 +1,17 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: #fff8dc;
+  background: #f0f0f0;
   margin: 0;
   padding: 20px;
 }
 .container {
-  max-width: 600px;
+  max-width: 700px;
   margin: auto;
   background: #ffffff;
-  padding: 20px;
+  padding: 25px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
 }
 h1 {
   text-align: center;
@@ -19,13 +19,13 @@ h1 {
 }
 label, legend {
   display: block;
-  margin-top: 10px;
+  margin-top: 12px;
   font-weight: bold;
 }
-input[type="text"], input[type="date"], textarea {
+input[type="text"], input[type="date"], select, textarea {
   width: 100%;
-  padding: 8px;
-  margin-top: 5px;
+  padding: 10px;
+  margin-top: 6px;
   box-sizing: border-box;
 }
 textarea {
@@ -33,15 +33,15 @@ textarea {
 }
 button {
   margin-top: 20px;
-  padding: 10px 20px;
+  padding: 12px 20px;
   background-color: #003366;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
 }
 fieldset {
-  margin-top: 15px;
-  padding: 10px;
+  margin-top: 20px;
+  padding: 12px;
   border: 1px solid #ccc;
 }
