@@ -1,6 +1,10 @@
 
-document.getElementById('admissionForm').addEventListener('submit', function(e) {
+document.getElementById("classSelect").addEventListener("change", function() {
+  const subjectSection = document.getElementById("subjectSection");
+  subjectSection.style.display = this.value === "11" ? "block" : "none";
+});
+
+document.getElementById("admissionForm").addEventListener("submit", function(e) {
   e.preventDefault();
-  alert('फॉर्म सफलतापूर्वक सबमिट किया गया!');
-  // आप यहां localStorage या PDF export की सुविधा जोड़ सकते हैं
+  alert("फॉर्म सफलतापूर्वक सबमिट हुआ!");
 });

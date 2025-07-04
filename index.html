@@ -1,73 +1,61 @@
-
 <!DOCTYPE html>
 <html lang="hi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admission Form - Bihar Government School</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>School Admission</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
   <div class="container">
-    <h1>राजकीय विद्यालय प्रवेश फॉर्म</h1>
+    <h1>स्कूल प्रवेश फॉर्म</h1>
     <form id="admissionForm">
-      <label>छात्र का नाम:</label>
-      <input type="text" name="studentName" required />
+      <section>
+        <h2>व्यक्तिगत जानकारी</h2>
+        <label>छात्र का नाम:</label><input type="text" name="studentName" required />
+        <label>पिता का नाम:</label><input type="text" name="fatherName" required />
+        <label>माता का नाम:</label><input type="text" name="motherName" required />
+        <label>लिंग:</label>
+        <select name="gender"><option value="पुरुष">पुरुष</option><option value="महिला">महिला</option></select>
+        <label>जन्म तिथि:</label><input type="date" name="dob" />
+      </section>
 
-      <label>पिता का नाम:</label>
-      <input type="text" name="fatherName" required />
+      <section>
+        <h2>संपर्क विवरण</h2>
+        <label>मोबाइल:</label><input type="text" name="mobile"/>
+        <label>पता:</label><textarea name="address"></textarea>
+      </section>
 
-      <label>माता का नाम:</label>
-      <input type="text" name="motherName" required />
+      <section>
+        <h2>कक्षा चयन</h2>
+        <label>कक्षा:</label>
+        <select name="classSelect" id="classSelect">
+          <option value="9">कक्षा 9</option>
+          <option value="11">कक्षा 11</option>
+        </select>
+      </section>
 
-      <label>लिंग:</label>
-      <select name="gender" required>
-        <option value="">चुनें</option>
-        <option value="पुरुष">पुरुष</option>
-        <option value="महिला">महिला</option>
-        <option value="अन्य">अन्य</option>
-      </select>
+      <section id="subjectSection">
+        <h2>विषय चयन (केवल कक्षा 11)</h2>
+        <label>अनिवार्य विषय:</label>
+        <select><option>हिन्दी</option><option>अंग्रेज़ी</option></select>
+        <label>ऐच्छिक विषय:</label>
+        <input type="checkbox" value="इतिहास"/> इतिहास
+        <input type="checkbox" value="भूगोल"/> भूगोल
+        <input type="checkbox" value="राजनीति विज्ञान"/> राजनीति विज्ञान
+        <input type="checkbox" value="मनोविज्ञान"/> मनोविज्ञान
+        <label>अतिरिक्त विषय:</label>
+        <select><option>संगीत</option><option>गृह विज्ञान</option></select>
+      </section>
 
-      <label>जन्म तिथि:</label>
-      <input type="date" name="dob" required />
+      <section>
+        <h2>प्रवेश जानकारी</h2>
+        <label>स्कूल का नाम:</label><input type="text" name="schoolName" value="राजकीय उच्च विद्यालय, बिहार"/>
+        <label>UDISE कोड:</label><input type="text" name="udise" value="102XXXX"/>
+        <label>प्रवेश तिथि:</label><input type="date" name="admissionDate"/>
+      </section>
 
-      <label>मोबाइल नंबर:</label>
-      <input type="text" name="mobile" required maxlength="10" />
-
-      <label>आधार नंबर:</label>
-      <input type="text" name="aadhaar" maxlength="12" />
-
-      <label>धर्म:</label>
-      <input type="text" name="religion" />
-
-      <label>श्रेणी:</label>
-      <select name="category" required>
-        <option value="">चुनें</option>
-        <option value="सामान्य">सामान्य</option>
-        <option value="OBC">OBC</option>
-        <option value="SC">SC</option>
-        <option value="ST">ST</option>
-      </select>
-
-      <label>पूरा पता:</label>
-      <textarea name="address" required></textarea>
-
-      <label>फोटो अपलोड करें:</label>
-      <input type="file" accept="image/*" />
-
-      <fieldset>
-        <legend>कक्षा 11 (Arts) के विषय:</legend>
-        <label><input type="checkbox" name="subjects" value="Hindi" /> हिन्दी</label>
-        <label><input type="checkbox" name="subjects" value="English" /> अंग्रेज़ी</label>
-        <label><input type="checkbox" name="subjects" value="History" /> इतिहास</label>
-        <label><input type="checkbox" name="subjects" value="Geography" /> भूगोल</label>
-        <label><input type="checkbox" name="subjects" value="PolScience" /> राजनीति विज्ञान</label>
-        <label><input type="checkbox" name="subjects" value="Psychology" /> मनोविज्ञान</label>
-        <label><input type="checkbox" name="subjects" value="HomeScience" /> गृह विज्ञान</label>
-        <label><input type="checkbox" name="subjects" value="Music" /> संगीत</label>
-      </fieldset>
-
-      <button type="submit">फॉर्म सबमिट करें</button>
+      <button type="submit">सबमिट करें</button>
     </form>
   </div>
   <script src="script.js"></script>
