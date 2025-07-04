@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admission Form - Bihar School</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>राजकीय उच्च विद्यालय, बिहार</h1>
+    <form id="admissionForm">
+      <label>छात्र का नाम:</label>
+      <input type="text" name="studentName" required />
+
+      <label>पिता का नाम:</label>
+      <input type="text" name="fatherName" required />
+
+      <label>जन्म तिथि:</label>
+      <input type="date" name="dob" required />
+
+      <label>पता:</label>
+      <textarea name="address" required></textarea>
+
+      <label>फोटो अपलोड करें:</label>
+      <input type="file" accept="image/*" />
+
+      <fieldset>
+        <legend>विषय चयन (Arts)</legend>
+        <label><input type="checkbox" name="subjects" value="Hindi" /> हिन्दी</label>
+        <label><input type="checkbox" name="subjects" value="English" /> अंग्रेज़ी</label>
+        <label><input type="checkbox" name="subjects" value="History" /> इतिहास</label>
+        <label><input type="checkbox" name="subjects" value="Geography" /> भूगोल</label>
+        <label><input type="checkbox" name="subjects" value="PolScience" /> राजनीति विज्ञान</label>
+        <label><input type="checkbox" name="subjects" value="Psychology" /> मनोविज्ञान</label>
+      </fieldset>
+
+      <button type="submit">सबमिट करें</button>
+    </form>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
