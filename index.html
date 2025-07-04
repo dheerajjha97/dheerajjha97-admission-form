@@ -1,13 +1,56 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>School Admission - Class 9 & 11</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>स्कूल प्रवेश फॉर्म (School Admission Form)</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>स्कूल प्रवेश फॉर्म (Class 9 & 11)</h1>
-  <p>यह Demo Version है — Final Layout और PDF निर्माण शामिल है।</p>
+  <header>
+    <h1>स्कूल प्रवेश फॉर्म</h1>
+    <p>कक्षा 9 एवं 11 हेतु</p>
+  </header>
+
+  <section id="student-info">
+    <h2>छात्र की जानकारी</h2>
+    <label>नाम: <input type="text" id="student-name"></label><br>
+    <label>पिता का नाम: <input type="text" id="father-name"></label><br>
+    <label>माता का नाम: <input type="text" id="mother-name"></label><br>
+    <label>कक्षा:
+      <select id="class-select">
+        <option value="9">कक्षा 9</option>
+        <option value="11">कक्षा 11</option>
+      </select>
+    </label><br>
+    <label>स्ट्रीम (केवल कक्षा 11 हेतु):
+      <select id="stream-select">
+        <option value="">--चयन करें--</option>
+        <option value="arts">Arts</option>
+        <option value="science">Science</option>
+        <option value="commerce">Commerce</option>
+      </select>
+    </label><br>
+  </section>
+
+  <section id="subjects">
+    <h2>विषय चयन</h2>
+    <p>अनिवार्य, ऐच्छिक एवं अतिरिक्त विषय:</p>
+    <div id="subject-selection"></div>
+  </section>
+
+  <section id="admin-config">
+    <h2>🛠️ Admin Settings (केवल एडमिन हेतु)</h2>
+    <label>स्कूल का नाम: <input type="text" id="school-name"></label><br>
+    <label>स्कूल का पता: <input type="text" id="school-address"></label><br>
+    <label>UDISE कोड: <input type="text" id="udise-code"></label><br>
+    <button onclick="saveAdminSettings()">सेटिंग सहेजें</button>
+  </section>
+
+  <section id="actions">
+    <button onclick="generatePDF()">📄 पीडीएफ जनरेट करें</button>
+    <button onclick="saveLocally()">💾 लोकल सेव करें</button>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>
