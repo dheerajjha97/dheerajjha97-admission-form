@@ -1,17 +1,84 @@
+:root {
+    --primary: #2c3e50;
+    --secondary: #3498db;
+    --light: #ecf0f1;
+    --dark: #34495e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
 body {
-  font-family: sans-serif;
-  background: #f4f4f4;
-  margin: 20px;
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
 }
-h1 { color: #003366; }
-section {
-  background: #fff;
-  padding: 15px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
+
+.container {
+    max-width: 100%;
+    padding: 15px;
 }
-label {
-  display: block;
-  margin: 10px 0;
+
+header {
+    background: linear-gradient(135deg, var(--primary), var(--dark));
+    color: white;
+    padding: 20px 15px;
+    text-align: center;
+    margin-bottom: 20px;
 }
+
+.screen {
+    display: none;
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.screen.active {
+    display: block;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.btn {
+    padding: 12px 20px;
+    background: var(--secondary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 5px 0;
+    width: 100%;
+}
+
+.student-item {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Add more styles as needed */
