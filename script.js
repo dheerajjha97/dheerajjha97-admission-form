@@ -1,81 +1,89 @@
-
-const subjectList = {
-  "arts": {
-    compulsory: ["Hindi", "English"],
-    elective: ["History", "Geography", "Political Science"],
-    additional: ["Home Science", "Music"]
-  },
-  "science": {
-    compulsory: ["Hindi", "English"],
-    elective: ["Physics", "Chemistry", "Biology", "Maths"],
-    additional: ["Computer Science"]
-  },
-  "commerce": {
-    compulsory: ["Hindi", "English"],
-    elective: ["Business Studies", "Accountancy", "Economics"],
-    additional: ["Maths", "Computer Science"]
-  }
-};
-
-function saveAdminSettings() {
-  const settings = {
-    school: document.getElementById('schoolName').value,
-    address: document.getElementById('schoolAddress').value,
-    udise: document.getElementById('udiseCode').value
-  };
-  localStorage.setItem("adminSettings", JSON.stringify(settings));
-  alert("Admin settings saved");
-}
-
-function toggleStream() {
-  const cls = document.getElementById("classSelect").value;
-  document.getElementById("streamGroup").style.display = cls === "11" ? "block" : "none";
-  loadSubjects();
-}
-
-function loadSubjects() {
-  const stream = document.getElementById("streamSelect").value;
-  const containerIds = ["compulsory", "elective", "additional"];
-  containerIds.forEach(id => {
-    const div = document.getElementById(id + "Subjects");
-    div.innerHTML = "";
-    if (subjectList[stream] && subjectList[stream][id]) {
-      subjectList[stream][id].forEach((subj, i) => {
-        const input = document.createElement("input");
-        input.type = "checkbox";
-        input.name = id;
-        input.value = subj;
-        input.id = id + "_" + i;
-        const label = document.createElement("label");
-        label.htmlFor = input.id;
-        label.innerText = subj;
-        div.appendChild(input);
-        div.appendChild(label);
-      });
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize database
+    if (!localStorage.getItem('students')) {
+        localStorage.setItem('students', JSON.stringify([]));
     }
-  });
-}
 
-function saveForm() {
-  const data = {
-    name: document.getElementById("studentName").value,
-    class: document.getElementById("classSelect").value,
-    stream: document.getElementById("streamSelect").value,
-    subjects: {}
-  };
-  ["compulsory", "elective", "additional"].forEach(type => {
-    const inputs = document.querySelectorAll("input[name=" + type + "]:checked");
-    data.subjects[type] = Array.from(inputs).map(i => i.value);
-  });
-  localStorage.setItem("studentForm", JSON.stringify(data));
-  alert("Form saved locally!");
-}
+    // Tab navigation
+    document.querySelectorAll('.tab-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            button.classList.add('active');
+            
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+            document.getElementById(button.dataset.target).classList.add('active');
+        });
+    });
 
-function generatePDF() {
-  alert("PDF generation is not yet implemented.");
-}
+    // Navigation buttons
+    document.querySelectorAll('[data-target]').forEach(button => {
+        if (button.dataset.target) {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.screen').forEach(screen => {
+                    screen.classList.remove('active');
+                });
+                document.getElementById(button.dataset.target).classList.add('active');
+                
+                document.querySelectorAll('.tab-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.target === button.dataset.target) {
+                        btn.classList.add('active');
+                    }
+                });
+            });
+        }
+    });
 
-window.onload = () => {
-  toggleStream();
-  loadSubjects();
-};
+    // Form submission
+    document.getElementById('admissionForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const studentData = Object.fromEntries(formData.entries());
+        
+        // Generate admission number
+        const admissionNumber = 'ADM-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000);
+        studentData.admissionNumber = admissionNumber;
+        studentData.admissionDate = new Date().toLocaleDateString();
+        
+        // Save to local storage
+        const students = JSON.parse(localStorage.getItem('students'));
+        students.push(studentData);
+        localStorage.setItem('students', JSON.stringify(students));
+        
+        alert('Admission saved successfully!');
+        this.reset();
+        document.querySelector('[data-target="students"]').click();
+        loadStudents();
+    });
+
+    // Load students
+    function loadStudents() {
+        const students = JSON.parse(localStorage.getItem('students'));
+        const studentList = document.getElementById('studentList');
+        studentList.innerHTML = '';
+        
+        students.forEach(student => {
+            const li = document.createElement('li');
+            li.className = 'student-item';
+            li.innerHTML = `
+                <div class="student-info">
+                    <h3>${student.studentNameEnglish}</h3>
+                    <p>${student.admissionNumber} | ${student.admissionDate}</p>
+                </div>
+                <div class="student-actions">
+                    <button class="action-btn view-btn" data-id="${student.admissionNumber}">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+            `;
+            studentList.appendChild(li);
+        });
+    }
+
+    // Initial load
+    loadStudents();
+});
