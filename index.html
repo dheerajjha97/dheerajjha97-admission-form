@@ -1,62 +1,21 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>स्कूल प्रवेश फॉर्म - Final Version</title>
-  <link rel="stylesheet" href="style.css">
+    <title>Class 11 Arts Admission</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .form-group { margin-bottom: 15px; }
+        /* ... (पूरा CSS यहाँ आएगा) ... */
+    </style>
 </head>
 <body>
-  <h1>📘 स्कूल प्रवेश फॉर्म</h1>
-
-  <section class="admin-panel">
-    <h2>🛠️ Admin Settings</h2>
-    <label>School Name: <input id="schoolName" type="text"></label>
-    <label>Address: <input id="schoolAddress" type="text"></label>
-    <label>UDISE Code: <input id="udiseCode" type="text"></label>
-    <button onclick="saveAdminSettings()">Save Settings</button>
-  </section>
-
-  <section>
-    <h2>👤 छात्र जानकारी</h2>
-    <label>नाम: <input id="studentName" type="text"></label>
-    <label>कक्षा:
-      <select id="classSelect" onchange="toggleStream()">
-        <option value="9">9वीं</option>
-        <option value="11">11वीं</option>
-      </select>
-    </label>
-    <div id="streamGroup">
-      <label>Stream:
-        <select id="streamSelect" onchange="loadSubjects()">
-          <option value="arts">Arts</option>
-          <option value="science">Science</option>
-          <option value="commerce">Commerce</option>
-        </select>
-      </label>
-    </div>
-  </section>
-
-  <section>
-    <h2>📚 विषय चयन</h2>
-    <div>
-      <h3>Compulsory Subjects</h3>
-      <div id="compulsorySubjects"></div>
-    </div>
-    <div>
-      <h3>Elective Subjects</h3>
-      <div id="electiveSubjects"></div>
-    </div>
-    <div>
-      <h3>Additional Subjects</h3>
-      <div id="additionalSubjects"></div>
-    </div>
-  </section>
-
-  <section>
-    <button onclick="saveForm()">💾 Save Form</button>
-    <button onclick="generatePDF()">📄 Generate PDF</button>
-  </section>
-
-  <script src="script.js"></script>
+    <h1>Admission Form</h1>
+    <form id="admissionForm">
+        <!-- पूरा फॉर्म कोड यहाँ आएगा -->
+    </form>
+    <script>
+        // पूरा JavaScript कोड यहाँ आएगा
+        localStorage.setItem('students', JSON.stringify([])); // डेटाबेस इनिशियलाइज़
+    </script>
 </body>
 </html>
