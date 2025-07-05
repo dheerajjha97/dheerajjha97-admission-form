@@ -1,21 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Class 11 Arts Admission</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        .form-group { margin-bottom: 15px; }
-        /* ... (पूरा CSS यहाँ आएगा) ... */
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 11 Arts Admission System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <h1>Admission Form</h1>
-    <form id="admissionForm">
-        <!-- पूरा फॉर्म कोड यहाँ आएगा -->
-    </form>
-    <script>
-        // पूरा JavaScript कोड यहाँ आएगा
-        localStorage.setItem('students', JSON.stringify([])); // डेटाबेस इनिशियलाइज़
-    </script>
+    <div class="offline-alert" id="offlineAlert">
+        <i class="fas fa-wifi"></i> App is working offline
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1 class="app-title">Class 11 Arts Admission</h1>
+            <p class="app-subtitle">Offline Admission Management System</p>
+        </header>
+        
+        <div class="nav-tabs">
+            <button class="tab-btn active" data-target="home">Home</button>
+            <button class="tab-btn" data-target="admission">Admission</button>
+            <button class="tab-btn" data-target="students">Students</button>
+        </div>
+        
+        <!-- Home Screen -->
+        <div id="home" class="screen active">
+            <div class="card">
+                <h2 class="card-title">Welcome to Admission Portal</h2>
+                <p>Manage Class 11 Arts admissions completely offline with this app.</p>
+                
+                <div class="btn-group">
+                    <button class="btn" data-target="admission">
+                        <i class="fas fa-user-plus"></i> New Admission
+                    </button>
+                    <button class="btn btn-outline" data-target="students">
+                        <i class="fas fa-list"></i> View Students
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Admission Form Screen -->
+        <div id="admission" class="screen">
+            <div class="card">
+                <h2 class="card-title">Admission Form</h2>
+                <form id="admissionForm">
+                    <!-- Form fields will be added here -->
+                </form>
+            </div>
+        </div>
+        
+        <!-- Student List Screen -->
+        <div id="students" class="screen">
+            <div class="card">
+                <h2 class="card-title">Student Records</h2>
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="Search by name or admission number">
+                </div>
+                <ul class="student-list" id="studentList">
+                    <!-- Student records will be loaded here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
